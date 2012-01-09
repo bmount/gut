@@ -1,0 +1,23 @@
+.leadmessage {position:absolute;
+    top:40px;
+    left:100px;
+    font-family:"Cambo";
+}
+
+.togeojson {position:absolute;
+    top:210px;
+    left:100px;
+    font-family:"Cambo";
+}
+
+.tokml {position:absolute;
+    top:310px;
+    left:100px;
+    font-family:"Cambo";
+}
+
+.pseudofooter {position:absolute;
+    top:430px;
+    left:100px;
+    font-family:"Cambo";
+}
