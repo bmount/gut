@@ -1,0 +1,65 @@
+<!doctype html>
+
+<html>
+
+  <head>
+  <link href="style/site.css" rel="stylesheet" type="text/css" />
+  <link href='http://fonts.googleapis.com/css?family=Nosifer|Cambo' rel='stylesheet' type='text/css'>
+  <title> sfgeo.org gut(s) </title>
+
+  </head>
+
+  <body>
+      <div class="leadmessage">
+        <h2>
+          <span style='font-family:"Nosifer";font-size:30px'>Gut <a style="text-decoration:none;" href="http://www.datasf.org/story.php?title=historic-districts-as-listed-in-the-national-register-of-historic-places">those</a> shapefiles</span> <p>for web and Google Earth friendly
+          <a style="text-decoration:none;" href="http://maxogden.com/#blog/gut-hosted-open-data-filets"> filets</a></p>
+        </h2> 
+      </div>
+
+      <div class="togeojson">
+            <form action="http://conv.sfgeo.org/_shp2json"
+              enctype="multipart/form-data" method="POST">
+              <p>
+              Pick a zipped shapefile and export to JSON:<br />
+              </p>
+
+              <input type="file" name="from_shapefile_gj">
+              <button class="convertbutton" type="submit">Convert to GeoJSON</button>
+
+            </form>    
+          
+      </div>
+
+
+      <div class="tokml">
+
+            <form action="http://conv.sfgeo.org/_shp2kml"
+              enctype="multipart/form-data" method="POST">
+            <p>
+            Or pick a zipped shapefile
+            and export to Google Earth format:
+            </p>
+
+            <input type="file" name="from_shapefile_kml" />
+            <button class="convertbutton" type="submit">Convert to KML</button>
+            </form>
+
+          </div>
+
+          <div class="pseudofooter">
+            <p>Access the underlying GeoJSON service directly via HTTP:</p>
+            <p><pre>curl -X POST http://conv.sfgeo.org/_shp2json --data-binary @yourfile.shp</pre></p>
+            <p>Or use sfgeo.org's proprietary temporary <a href="http://wiki.webhooks.org/w/page/13385124/FrontPage">WebHook</a> implementation, WebBoomerang, and pipe the JSON to some other endpoint like so:</p>
+            <p>
+              <pre>
+curl -X POST http://conv.sfgeo.org/_shp2json --data-binary @shape.zip > /tmp/converted.json && \
+curl -X POST http://your.iriscouch.com/xcb -H "Content-Type: application/json" \
+ --data-binary @/tmp/converted.json            
+              </pre>
+            </p>
+            <br />
+            <a href="https://github.com/maxogden/gut">Source</a> | <a href="http://twitter.com/brian_mount">Contact</a>
+          </body>
+
+</html>
